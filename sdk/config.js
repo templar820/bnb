@@ -1,13 +1,13 @@
 const config = {
     host: "localhost",
     database: "postgres", //live
-    user: "postgres",
-    password: "swat4000",
+    user: "fil",
+    password: "kek",
   
     //Binance
     api: "https://dex.binance.org/", //live
-    filePath: "c:/opt/fantom/fantom-binance/cli/node-binary/cli/prod/0.5.8.1/windows/", //live
-    fileName: "bnbcli.exe", //live
+    filePath: "/Users/ponomarenkofilipp/Desktop/node-binary-master/cli/prod/0.5.8.1/mac", //live
+    fileName: "bnbcli", //live
     chainID: "Binance-Chain-Tigris", //live
     nodeData: "https://dataseed5.defibit.io:443", //live
     nodeHTTPS: "https://dataseed5.defibit.io:443", //live

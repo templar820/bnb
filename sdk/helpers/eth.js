@@ -59,7 +59,7 @@ const eth = {
 
   getERC20Balance(address, contractAddress, callback) {
     let myContract = new web3.eth.Contract(config.erc20ABI, contractAddress)
-
+    // console.log(myContract.methods.balanceOf)
     myContract.methods.balanceOf(address).call({ from: address })
     .then((balance) => {
       console.log(balance);
@@ -67,7 +67,10 @@ const eth = {
 
       callback(null, theBalance)
     })
-    .catch(callback)
+    .catch(err => {
+      console.log(err)
+      callback(err)
+    })
   },
 
   getERC20Symbol(contractAddress, callback) {

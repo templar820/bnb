@@ -59,7 +59,10 @@ db.none('DROP TABLE IF EXISTS client_eth_accounts').then(el => {
 
 //eth_accounts
 db.none('DROP TABLE IF EXISTS eth_accounts').then(el => {
-  db.none('CREATE TABLE eth_accounts (uuid char(36) NOT NULL, private_key text, address varchar(64), created timestamp(6), encr_key text,  PRIMARY KEY (uuid)) WITH (OIDS=FALSE);')
+  db.none('CREATE TABLE eth_accounts (uuid char(36) NOT NULL, private_key text, address varchar(64), created varchar(32), encr_key text,  PRIMARY KEY (uuid)) WITH (OIDS=FALSE);')
+  .then(i => {
+    db.none("INSERT INTO eth_accounts (uuid, private_key, address, created, encr_key) VALUES ('d7bb664a-6b4b-29e5-8f40-b6ef699a58dd', 'password', '0xd0352a019e9ab9d757776f532377aaebd36fd541', '123', 'kek')")
+  }) 
 }).catch(error => {
   console.log(error);
 })
@@ -82,7 +85,7 @@ db.none('DROP TABLE IF EXISTS swaps').then(el => {
 db.none('DROP TABLE IF EXISTS tokens').then(el => {
   db.none('CREATE TABLE tokens ( uuid char(36) NOT NULL, name varchar(64), symbol varchar(10), unique_symbol varchar(32), total_supply varchar(64), erc20_address varchar(64), eth_account_uuid char(36), bnb_account_uuid char(36), processed bool, listing_proposed bool, listing_proposal_uuid char(36), listed bool, created char(36), mintable bool, minimum_swap_amount varchar(32), fee_per_swap varchar(32), process_date char(36), bnb_to_eth_enabled boolean, eth_to_bnb_enabled boolean, PRIMARY KEY (uuid)) WITH (OIDS=FALSE);')
   .then(i => {
-    db.none("INSERT INTO tokens (uuid, name, symbol, unique_symbol, total_supply, erc20_address, eth_account_uuid, bnb_account_uuid, processed, listing_proposed, listing_proposal_uuid, listed, created, mintable, minimum_swap_amount, fee_per_swap, process_date, bnb_to_eth_enabled, eth_to_bnb_enabled) VALUES ('100', 'Mesefa', 'SEFA', 'SEFA-E02','30,000,000','0xAB65aa55175cf0429b0eC3153637e5feBd5920E8', '100', '100', false, false, '1577836', true, '1577836', false, '1', '0.02', '', true, true)")
+    db.none("INSERT INTO tokens (uuid, name, symbol, unique_symbol, total_supply, erc20_address, eth_account_uuid, bnb_account_uuid, processed, listing_proposed, listing_proposal_uuid, listed, created, mintable, minimum_swap_amount, fee_per_swap, process_date, bnb_to_eth_enabled, eth_to_bnb_enabled) VALUES ('d7bb664a-6b4b-29e5-8f40-b6ef699a58dd', 'Mesefa', 'SEFA', 'SEFA-E02','30,000,000','0xd0352a019e9ab9d757776f532377aaebd36fd541', 'd7bb664a-6b4b-29e5-8f40-b6ef699a58dd', 'd7bb664a-6b4b-29e5-8f40-b6ef699a58dd', true, false, '1577836', true, '1577836', false, '1', '0.02', '', true, true)")
   })
 }).catch(error => {
   console.log(error);
