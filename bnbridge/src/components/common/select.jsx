@@ -36,7 +36,7 @@ function StyledSelect(props) {
           name="age"
           id={ id }
           labelWidth={ 0 }
-          value = {value}
+          value = {"Mesefa"}
           disabled = {true}
         />
     </FormControl>

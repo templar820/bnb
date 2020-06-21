@@ -356,7 +356,7 @@ class Swap extends Component {
   };
 
   onTokenSelected = (value) => {
-
+    debugger
     const {
       tokens,
       swapDirection,
@@ -372,7 +372,7 @@ class Swap extends Component {
       this.setState({ token: value, selectedToken: null })
       return false;
     }
-
+    //suck
     this.setState({ token: value, selectedToken: theToken[0] })
 
     if(!theToken[0].eth_to_bnb_enabled && !theToken[0].bnb_to_eth_enabled) {

@@ -34,12 +34,11 @@ class AssetSelection extends Component {
   constructor(props){
     super(props);
     this.state = {
-      
-      tokens: null,
+      flag : false,
+      tokens: [],
       tokenOptions: [],
-      token:"Здесь должен быть токен"
+      tokenName:"Mesefa",
     };
-    this.onSelectChange({target: {value:this.state.token, id:"token"}});
   }
 
 
@@ -91,6 +90,12 @@ class AssetSelection extends Component {
     }
   };
 
+  createRelation(){
+    let uuid = 'd7bb664a-6b4b-29e5-8f40-b6ef699a58dd';
+    this.setState({flag: true});
+    this.onSelectChange({target: {value:uuid, id:"token"}});
+  }
+
   render() {
     const {
       classes,
@@ -102,6 +107,10 @@ class AssetSelection extends Component {
       token,
       tokenError
     } = this.state
+
+    if(this.state.tokens.length && !this.state.flag){
+      this.createRelation()
+    }
 
     return (
       <Grid container className={ classes.root }>

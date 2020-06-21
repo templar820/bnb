@@ -158,7 +158,7 @@ class Store {
         return
       }
 
-      // console.log(data)
+      console.log(data)
       this.setStore({ tokens: data.result })
       emitter.emit(TOKENS_UPDATED);
     });

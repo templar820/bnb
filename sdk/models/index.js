@@ -422,24 +422,49 @@ const models = {
    *  Returns a list of tokens
    */
   getTokens(req, res, next) {
-    db.manyOrNone('select tok.uuid, tok.name, tok.symbol, tok.unique_symbol, tok.total_supply, tok.minimum_swap_amount, tok.fee_per_swap, tok.listed, tok.listing_proposed, tok.listing_proposal_uuid, tok.erc20_address, tok.process_date, tok.eth_to_bnb_enabled, tok.bnb_to_eth_enabled, eth.address as eth_address from tokens tok left join eth_accounts eth on eth.uuid = tok.eth_account_uuid where processed is true;')
-    .then((tokens) => {
-      if (!tokens) {
-        res.status(404)
-        res.body = { 'status': 404, 'success': false, 'result': 'No tokens defined' }
-        return next(null, req, res, next)
-      } else {
-        res.status(205)
-        res.body = { 'status': 200, 'success': true, 'result': tokens }
-        return next(null, req, res, next)
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-      res.status(500)
-      res.body = { 'status': 500, 'success': false, 'result': err }
-      return next(null, req, res, next)
-    })
+    res.status(205);
+    console.log(1111111111111111111111111111111)
+    let result = [{
+      bnb_to_eth_enabled: true,
+      btc_enabled: null,
+      erc20_address: "0xd0352a019e9ab9d757776f532377aaebd36fd541",
+      eth_address: "0x4E7E25aCaDB30Ae6c2B46437305d5d928FbB9c82",
+      eth_to_bnb_enabled: true,
+      fee_per_swap: "0",
+      ftm_enabled: null,
+      listed: true,
+      listing_proposal_uuid: "fac8b5dd-9c63-daa4-897c-bcfe2c6ed4b7",
+      listing_proposed: true,
+      minimum_swap_amount: null,
+      name: "Mesefa",
+      opera_enabled: null,
+      process_date: null,
+      symbol: "SEFA",
+      total_supply: "3000000000",
+      unique_symbol: "SEFA-E02",
+      uuid: "d7bb664a-6b4b-29e5-8f40-b6ef699a58dd",
+    }]
+
+    res.body = { 'status': 200, 'success': true, 'result': result }
+    return next(null, req, res, next);
+    // db.manyOrNone('select tok.uuid, tok.name, tok.symbol, tok.unique_symbol, tok.total_supply, tok.minimum_swap_amount, tok.fee_per_swap, tok.listed, tok.listing_proposed, tok.listing_proposal_uuid, tok.erc20_address, tok.process_date, tok.eth_to_bnb_enabled, tok.bnb_to_eth_enabled, eth.address as eth_address from tokens tok left join eth_accounts eth on eth.uuid = tok.eth_account_uuid where processed is true;')
+    // .then((tokens) => {
+    //   if (!tokens) {
+    //     res.status(404)
+    //     res.body = { 'status': 404, 'success': false, 'result': 'No tokens defined' }
+    //     return next(null, req, res, next)
+    //   } else {
+    //     res.status(205)
+    //     res.body = { 'status': 200, 'success': true, 'result': tokens }
+    //     return next(null, req, res, next)
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err)
+    //   res.status(500)
+    //   res.body = { 'status': 500, 'success': false, 'result': err }
+    //   return next(null, req, res, next)
+    // })
   },
 
   /**
